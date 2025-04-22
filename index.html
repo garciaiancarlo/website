@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Carlo Garcia | Professional Portfolio</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Variables */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --accent-color: #ec4899;
+            --dark-color: #1e293b;
+            --dark-gray: #334155;
+            --medium-gray: #64748b;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+        }
+
+        /* Global Styles */
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 16px;
+            box-shadow: var(--shadow-sm);
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background: #db2777;
+        }
+
+        .section-padding {
+            padding: 96px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--dark-color);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--medium-gray);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(124, 58, 237, 0.95)), 
+                        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 640px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 56px;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+            margin-bottom: 32px;
+            max-width: 560px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            bottom: 0;
+            width: 40%;
+            max-width: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            margin-bottom: 64px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title h2 {
+            margin-bottom: 16px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: var(--radius-md);
+        }
+
+        .feature-icon img {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            height: 280px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light-gray);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 80px;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-content {
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-author img {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 4px;
+            color: var(--dark-color);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            border-radius: var(--radius-md);
+            margin: 0 24px;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            font-size: 18px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 24px;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-column ul li i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero-image {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 16px 0;
+            }
+
+            .hero {
+                padding: 80px 0;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .hero-image {
+                position: relative;
+                width: 80%;
+                margin: 40px auto 0;
+                right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-padding {
+                padding: 64px 0;
+            }
+
+            .section-title {
+                margin-bottom: 48px;
+            }
+
+            .cta {
+                margin: 0;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="https://scontent.fmnl40-1.fna.fbcdn.net/v/t1.15752-9/491277304_1223440275849982_2709480913278982167_n.png?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=TNqgcBs8fZ0Q7kNvwFz63Pl&_nc_oc=AdmEdr7M0kSxTV7ahFjHdvvtlCV4DaFTSLZvWBHqm3pyaycBxsfIUpPd0bHwTqJyADA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-1.fna&oh=03_Q7cD2AFHg_eC50csPOXAce6xILo_0Opd081Md2GQODmevt2mMg&oe=682EC3C1" alt="Logo">
+                    </div>
+                    <span>Ian Carlo Garcia</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ian Carlo Garcia</h1>
+                <p>Web developer specializing in modern web technologies and creating exceptional digital experiences.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get in Touch</a>
+                    <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://scontent.fmnl40-1.fna.fbcdn.net/v/t1.15752-9/491277304_1223440275849982_2709480913278982167_n.png?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=TNqgcBs8fZ0Q7kNvwFz63Pl&_nc_oc=AdmEdr7M0kSxTV7ahFjHdvvtlCV4DaFTSLZvWBHqm3pyaycBxsfIUpPd0bHwTqJyADA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-1.fna&oh=03_Q7cD2AFHg_eC50csPOXAce6xILo_0Opd081Md2GQODmevt2mMg&oe=682EC3C1" alt="Ian Carlo Garcia">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Skills) -->
+    <section id="skills" class="features section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Technical Skills</h2>
+                <p>I bring a diverse set of technical skills to every project, ensuring high-quality results</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="JavaScript">
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Expert in modern JavaScript (ES6+) including frameworks like React and Node.js for full-stack development.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="CSS">
+                    </div>
+                    <h3>CSS & Design</h3>
+                    <p>Advanced CSS/SASS skills with a focus on responsive design, animations, and modern layout techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="Database">
+                    </div>
+                    <h3>Database Systems</h3>
+                    <p>Experience with both SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) database systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="gallery section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Portfolio</h2>
+                <p>A selection of my recent projects and work</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://scontent.fmnl40-2.fna.fbcdn.net/v/t1.15752-9/476383062_1408958906735549_4251582590220995939_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=ybT67JyDiP0Q7kNvwFr0VeS&_nc_oc=AdlC2HpEyKKW6Q0mkm0mb-xoCQT3aHvCKglHOC_6cgy5aIH8Eldam8Xp-bxKTmHdBo8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-2.fna&oh=03_Q7cD2AH96zZpZLUwOY8UnO3Ebv3SDFxW8SLpqPngTmUfTe3deA&oe=682EBB3F" alt="Project 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fmnl40-1.fna.fbcdn.net/v/t1.15752-9/477057978_490079533902449_6824746981965178011_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=648nEbc1cWkQ7kNvwHKBisf&_nc_oc=Adk6d8MDCqkcrNhQXresG-euDs-oHROW4JGguUWFrEbw2x0HBNEEFJk3V8ytaBNefmc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-1.fna&oh=03_Q7cD2AGPKOAV5bK2o65Xz_yjVjiUgxlnwBrqvnSoMVe8z6Eguw&oe=682EE51C" alt="Project 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fmnl40-2.fna.fbcdn.net/v/t1.15752-9/476615068_1805821923546533_1382117854427421906_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=87HUzyulDMEQ7kNvwGrSrgu&_nc_oc=Adl7iMVmOT3sPw-OJWhUANYwq8YtDrpngW5J5mkS58gimoQ3-mw1xigV1Lctc4h1IxM&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-2.fna&oh=03_Q7cD2AF80paYxFGbz6xMkIj2Lh9nw1uv3D7Qd1sf8MXbZmB4nQ&oe=682EC7E8" alt="Project 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fmnl40-1.fna.fbcdn.net/v/t1.15752-9/490991389_868788342106397_7440022000730823396_n.png?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=7tInW-KNaWkQ7kNvwFXClh_&_nc_oc=AdkdV6GYUHS4KSZZ8FYSpEILkmap-b3ac8m_GmVfmVDl3m8X92qywP_CiAqFpTw1OwY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl40-1.fna&oh=03_Q7cD2AHlj2B0RXSozPkcbiHrTPvfBrduMSZ6ZB1H5TGzfvyN_A&oe=682EBDE0" alt="Project 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to start your project?</h2>
+            <p>I'm available for freelance work and full-time positions. Let's discuss how I can help bring your ideas to life.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#" class="btn btn-outline">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Me</h3>
+                    <p>Professional full-stack developer with a passion for creating efficient, scalable web applications with intuitive user interfaces.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ian.carlo.castro.garcia/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> San Agustin, Sta Rita, Pampanga</a></li>
+                        <li><a href="tel:+09612961794"><i class="fas fa-phone"></i> +63 961 296 1794</a></li>
+                        <li><a href="mailto:garciaiancarlo1@gmail.com"><i class="fas fa-envelope"></i> garciaiancarlo1@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Ian Carlo Garcia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
